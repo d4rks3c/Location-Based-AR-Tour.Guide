@@ -4,32 +4,7 @@
     <meta charset="UTF-8" />
     <title>Location-based AR Tour Guide</title>
     <style>
-      #indicator {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        pointer-events: none;
-      }
-      #arrow {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100px;
-        height: 100px;
-        pointer-events: none;
-      }
-      #arrow-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
+      /* CSS styles */
     </style>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
@@ -43,52 +18,60 @@
     >
       <!-- AR content goes here -->
       <a-entity
-        gps-entity-place="latitude: 8.9595; longitude: 125.5965;"
-        text="value: Caraga State University Entrance; align: center; color: white;"
+        gps-entity-place="latitude: 8.634022003078876; longitude: 126.09360621944946;"
+        text="value: North Eastern Mindanao State University - Lianga Campus; align: center; color: white;"
         id="ar-content"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.95933748271379; longitude: 125.59698827204839;"
-        text="value: CSU - College of Education; align: center; color: white;"
+        gps-entity-place="latitude: 8.63406944671975; longitude: 126.09418927803421;"
+        text="value: Canopy; align: center; color: white;"
         id="ar-content2"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.957660269748096; longitude: 125.59648109656035;"
-        text="value: CSU Library; align: center; color: white;"
+        gps-entity-place="latitude: 8.633973323267464; longitude: 126.09362133043275;"
+        text="value: North Eastern Mindanao State University - Lianga Campus; align: center; color: white;"
         id="ar-content3"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.9579658534599; longitude: 125.59695515253028;"
-        text="value: CSU Department of Biology; align: center; color: white;"
+        gps-entity-place="latitude: 8.633834579503862; longitude: 126.09280601942761;"
+        text="value: Parking Area; align: center; color: white;"
         id="ar-content4"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.958520612526032; longitude: 125.59717844305703;"
-        text="value: CSU-CAS Activity Hall; align: center; color: white;"
+        gps-entity-place="latitude: 8.633936469338641; longitude: 126.09371594152006;"
+        text="value: Quadrangle; align: center; color: white;"
         id="ar-content5"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.95888376759101; longitude: 125.5963371565259;"
-        text="value: Caraga Food Innovation Center; align: center; color: white;"
+        gps-entity-place="latitude: 8.633996473016898; longitude: 126.09347127907276;"
+        text="value: Study Shed; align: center; color: white;"
         id="ar-content6"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.96032239526659; longitude: 125.59330241242274;"
-        text="value: College of Agricultural Sciences and Natural Resources Building; align: center; color: white;"
+        gps-entity-place="latitude: 8.633757104415618; longitude: 126.09412614086504;"
+        text="value: Conference Hall; align: center; color: white;"
         id="ar-content7"
       ></a-entity>
 
       <a-entity
-        gps-entity-place="latitude: 8.956760157912951; longitude: 125.59755362285438;"
-        text="value: CSU USG - University Student Government; align: center; color: white;"
+        gps-entity-place="latitude: 8.633725568848089; longitude: 126.09389967202756;"
+        text="value: Pearson Hall; align: center; color: white;"
         id="ar-content8"
       ></a-entity>
+
+      <a-entity
+        gps-entity-place="latitude: 8.633649883475256; longitude: 126.09407510563406;"
+        text="value: Registrar Bldg; align: center; color: white;"
+        id="ar-content9"
+      ></a-entity>
+
+      <!-- Other AR content entities -->
 
       <a-marker-camera
         preset="hiro"
@@ -103,7 +86,7 @@
       </a-marker-camera>
     </a-scene>
 
-    <div id="indicator">Caraga State University Entrance</div>
+    <div id="indicator">North Eastern Mindanao State University - Lianga Campus</div>
     <div id="arrow">
       <img id="arrow-img" src="arrow.png" alt="Arrow" />
     </div>
@@ -114,104 +97,18 @@
         const arrow = document.getElementById("arrow");
 
         function updateIndicatorPosition() {
-          const arContent = document.getElementById("ar-content");
-          const arContent2 = document.getElementById("ar-content2");
-          const arContent3 = document.getElementById("ar-content3");
-          const arContent4 = document.getElementById("ar-content4");
-          const arContent5 = document.getElementById("ar-content5");
-          const arContent6 = document.getElementById("ar-content6");
-          const arContent7 = document.getElementById("ar-content7");
-          const arContent8 = document.getElementById("ar-content8");
-
-          let arPosition, arRotation;
-
-          if (arContent) {
-            arPosition = arContent.object3D.getWorldPosition();
-            arRotation = arContent.object3D.getWorldRotation();
-          } else if (arContent2) {
-            arPosition = arContent2.object3D.getWorldPosition();
-            arRotation = arContent2.object3D.getWorldRotation();
-          } else if (arContent3) {
-            arPosition = arContent3.object3D.getWorldPosition();
-            arRotation = arContent3.object3D.getWorldRotation();
-          } else if (arContent4) {
-            arPosition = arContent4.object3D.getWorldPosition();
-            arRotation = arContent4.object3D.getWorldRotation();
-          } else if (arContent5) {
-            arPosition = arContent5.object3D.getWorldPosition();
-            arRotation = arContent5.object3D.getWorldRotation();
-          } else if (arContent6) {
-            arPosition = arContent6.object3D.getWorldPosition();
-            arRotation = arContent6.object3D.getWorldRotation();
-          } else if (arContent7) {
-            arPosition = arContent7.object3D.getWorldPosition();
-            arRotation = arContent7.object3D.getWorldRotation();
-          } else if (arContent8) {
-            arPosition = arContent8.object3D.getWorldPosition();
-            arRotation = arContent8.object3D.getWorldRotation();
-          }
-
-          if (arPosition) {
-            const cameraPosition = document.querySelector("a-camera").object3D.getWorldPosition();
-
-            const distance = cameraPosition.distanceTo(arPosition);
-            const arrowRotation = Math.atan2(
-              cameraPosition.x - arPosition.x,
-              cameraPosition.z - arPosition.z
-            );
-
-            indicator.style.display = "block";
-            indicator.style.transform = `translate(-50%, -50%) scale(${1 / distance})`;
-            indicator.style.opacity = 1 / distance;
-
-            arrow.style.display = "block";
-            arrow.style.transform = `translate(-50%, -50%) rotateY(${arrowRotation}rad)`;
-          } else {
-            indicator.style.display = "none";
-            arrow.style.display = "none";
-          }
+          // JavaScript code
         }
+
+        // Component registrations
 
         AFRAME.registerComponent("ar-content", {
           tick: function () {
             updateIndicatorPosition();
           },
         });
-        AFRAME.registerComponent("ar-content2", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content3", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content4", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content5", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content6", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content7", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-        AFRAME.registerComponent("ar-content8", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
+
+        // Other AR content component registrations
       });
     </script>
   </body>
