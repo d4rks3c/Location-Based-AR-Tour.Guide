@@ -1,115 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Location-based AR Tour Guide</title>
-    <style>
-      /* CSS styles */
-    </style>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js"></script>
-  </head>
-  <body>
-    <a-scene
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
-      gps-camera="gpsMinDistance: 10; defaultHeight: 1.5"
-    >
-      <!-- AR content goes here -->
-      <a-entity
-        gps-entity-place="latitude: 8.634123; longitude: 126.093567;"
-        text="value: North Eastern Mindanao State University - Lianga Campus; align: center; color: white;"
-        id="ar-content"
-      ></a-entity>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    </head>
 
-      <a-entity
-        gps-entity-place="latitude: 8.63406944671975; longitude: 126.09418927803421;"
-        text="value: Canopy; align: center; color: white;"
-        id="ar-content2"
-      ></a-entity>
+    <body style="margin: 0; overflow: hidden;">
+        <a-scene
+            embedded
+            loading-screen="enabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: false;"
+        >
+                <a-image
+                    src="assets/asset.png"
+                    look-at="[gps-camera]"
+                    scale="1 1 1"
+                    gps-entity-place="latitude: 8.634123; longitude: 126.093567;"
+                ></a-image>
 
-      <a-entity
-        gps-entity-place="latitude: 8.633973323267464; longitude: 126.09362133043275;"
-        text="value: North Eastern Mindanao State University - Lianga Campus; align: center; color: white;"
-        id="ar-content3"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633834579503862; longitude: 126.09280601942761;"
-        text="value: Parking Area; align: center; color: white;"
-        id="ar-content4"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633936469338641; longitude: 126.09371594152006;"
-        text="value: Quadrangle; align: center; color: white;"
-        id="ar-content5"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633996473016898; longitude: 126.09347127907276;"
-        text="value: Study Shed; align: center; color: white;"
-        id="ar-content6"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633757104415618; longitude: 126.09412614086504;"
-        text="value: Conference Hall; align: center; color: white;"
-        id="ar-content7"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633725568848089; longitude: 126.09389967202756;"
-        text="value: Pearson Hall; align: center; color: white;"
-        id="ar-content8"
-      ></a-entity>
-
-      <a-entity
-        gps-entity-place="latitude: 8.633649883475256; longitude: 126.09407510563406;"
-        text="value: Registrar Bldg; align: center; color: white;"
-        id="ar-content9"
-      ></a-entity>
-
-      <!-- Other AR content entities -->
-
-      <a-marker-camera
-        preset="hiro"
-        emitevents="true"
-        cursor="rayOrigin: mouse"
-      >
-        <a-box
-          position="0 0.5 0"
-          material="color: red"
-          scale="0.4 0.4 0.4"
-        ></a-box>
-      </a-marker-camera>
-    </a-scene>
-
-    <div id="indicator">North Eastern Mindanao State University - Lianga Campus</div>
-    <div id="arrow">
-      <img id="arrow-img" src="arrow.png" alt="Arrow" />
-    </div>
-
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const indicator = document.getElementById("indicator");
-        const arrow = document.getElementById("arrow");
-
-        function updateIndicatorPosition() {
-          // JavaScript code
-        }
-
-        // Component registrations
-
-        AFRAME.registerComponent("ar-content", {
-          tick: function () {
-            updateIndicatorPosition();
-          },
-        });
-
-        // Other AR content component registrations
-      });
-    </script>
-  </body>
+            <a-camera gps-camera rotation-reader></a-camera>
+        </a-scene>
+    </body>
 </html>
